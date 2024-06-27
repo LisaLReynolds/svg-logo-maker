@@ -1,0 +1,26 @@
+{
+  "name": "svg-logo-maker",
+  "version": "1.0.0",
+  "description": "An application that takes user input of color, shape, and text, to generate a SVG to a .svg file",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "lisalreynolds"
+  },
+  "author": "Lisa Reynolds",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "jest": "^28.1.3"
+  }
+}
