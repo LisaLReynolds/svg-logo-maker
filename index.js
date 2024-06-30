@@ -1,3 +1,4 @@
+const generateSVG = require("./lib/generateSVG.js");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
@@ -9,7 +10,7 @@ const questions = [
   },
   {
     type: "input",
-    name: "text color",
+    name: "textColor",
     message: "Enter a text color:",
   },
   {
@@ -20,14 +21,14 @@ const questions = [
   },
   {
     type: "input",
-    name: "shape color",
+    name: "shapeColor",
     message: "Enter a shape color:",
   },
 ];
 
 function init() {
-  inquirer.prompt(questions).then((data) => {
-    fs.writeFile("logo.svg", generateSVG(data), (err) => {
+  inquirer.prompt(questions).then((answers) => {
+    fs.writeFile("logo.svg", generateSVG(answers), (err) => {
       if (err) console.log(err);
       else console.log("Your logo was generated successfully!");
     });
