@@ -1,3 +1,6 @@
+const inquirer = require("inquirer");
+const fs = require("fs");
+
 const questions = [
   {
     type: "input",
@@ -21,3 +24,14 @@ const questions = [
     message: "Enter a shape color:",
   },
 ];
+
+function init() {
+  inquirer.prompt(questions).then((data) => {
+    fs.writeFile("logo.svg", generateSVG(data), (err) => {
+      if (err) console.log(err);
+      else console.log("Your logo was generated successfully!");
+    });
+  });
+}
+
+init();
