@@ -27,7 +27,9 @@ const questions = [
 ];
 
 function init() {
-  inquirer.prompt(questions).then((answers) => {
+  inquirer.prompt(questions)
+  .then(({shape}) => switch())
+  .then((answers) => {
     fs.writeFile("logo.svg", generateSVG(answers), (err) => {
       if (err) console.log(err);
       else console.log("Your logo was generated successfully!");
