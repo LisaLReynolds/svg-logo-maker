@@ -27,14 +27,28 @@ const questions = [
 ];
 
 function init() {
-  inquirer.prompt(questions)
-  .then(({shape}) => switch())
-  .then((answers) => {
-    fs.writeFile("logo.svg", generateSVG(answers), (err) => {
-      if (err) console.log(err);
-      else console.log("Your logo was generated successfully!");
+  inquirer
+    .prompt(questions)
+    .then((answers) => {
+      switch (answers.shape) {
+        case "Circle":
+          answers.shapeType = new Circle();
+          break;
+        case "Square":
+          answers.shapeType = new Square();
+          break;
+        case "Triangle":
+          answers.shapeType = new Triangle();
+          break;
+      }
+      fs.writeFile("logo.svg", generateSVG(answers), (err) => {
+        if (err) console.log(err);
+        else console.log("Your logo was generated successfully!");
+      });
+    })
+    .catch((error) => {
+      console.log(error);
     });
-  });
 }
 
 init();
