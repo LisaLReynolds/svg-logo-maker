@@ -1,6 +1,6 @@
-const generateSVG = require("./lib/generateSVG.js");
 const inquirer = require("inquirer");
 const fs = require("fs");
+const { Triangle, Circle, Square } = require("./lib/shapes");
 
 const questions = [
   {
@@ -30,20 +30,24 @@ function init() {
   inquirer
     .prompt(questions)
     .then((answers) => {
+      let shape;
       switch (answers.shape) {
         case "Circle":
-          answers.shapeType = new Circle();
+          shape = new Circle();
           break;
         case "Square":
-          answers.shapeType = new Square();
+          shape = new Square();
           break;
         case "Triangle":
-          answers.shapeType = new Triangle();
+          shape = new Triangle();
           break;
       }
-      fs.writeFile("logo.svg", generateSVG(answers), (err) => {
+      shape.setText(answers.text);
+      shape.setTextColor(answers.textColor);
+      shape.setColor(answers.shapeColor);
+      fs.writeFile("logo.svg", shape.render(), (err) => {
         if (err) console.log(err);
-        else console.log("Your logo was generated successfully!");
+        else console.log("Generated logo.svg");
       });
     })
     .catch((error) => {
