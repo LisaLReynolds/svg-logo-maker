@@ -16,6 +16,8 @@ Once the repository has been cloned and inquirer has been installed, run the app
 
 A video walkthrough of the application can be viewed here:
 
+https://drive.google.com/file/d/1bfrF9C_sVOiINxFTVvMUMa4FmPYhkoGh/view?usp=sharing
+
 ## Tests
 
 Tests for this application may be viewed in the shapes.test.js file located in the lib directory. To run the tests using Jest, enter in the command line: npm test.
